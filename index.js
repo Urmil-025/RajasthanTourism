@@ -4,7 +4,7 @@ var scr_config = require('./scr_config.json');
 function MessageHandler(context, event) {
     //ScriptHandler(context, event);
     //menu
-	if (event.message.toLowerCase() == "menu") {
+	if (event.message.toLowerCase() == "menu" || event.message.toLowerCase() == "help") {
 		var menuCat = ["Hello "+ event.senderobj.display + "! Greetings from Vasundhara Raje,The Hon'ble Chief Minister of Rajasthan. \n\nWelcome! What would you like to do today?", 
 		{
 			"type": "catalogue",
@@ -46,6 +46,16 @@ function MessageHandler(context, event) {
 						"type": "text",
 						"title": "Know"
 					}]
+				},
+				{
+					"title": "Swachh Bharat - Rajasthan",
+					"subtitle": "Check out the latest updates and what you can do. ",
+					"imgurl": "https://timesofindia.indiatimes.com/thumb/msid-48159028,width-400,resizemode-4/48159028.jpg",
+					"options": [{
+						"type": "url",
+						"url": "https://blogs.timesofindia.indiatimes.com/voices/swachh-bharat-mission-lessons-from-rajasthan/",
+						"title": "Know more!"
+					}]
 				}
 		    ]
 		}]; 
@@ -72,7 +82,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/tourist-destinations.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -87,7 +97,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/forts.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -102,7 +112,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/lakes-rivers-to-visit.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -117,7 +127,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/parks-and-wildlife.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -144,7 +154,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/ajmer.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -159,7 +169,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/barmer.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -174,7 +184,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/chittorgarh.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -189,7 +199,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/dausa.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -200,7 +210,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore More",
 						"url": "http://www.tourism.rajasthan.gov.in/tourist-destinations.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 				
@@ -210,7 +220,7 @@ function MessageHandler(context, event) {
 		return;
 	}
 	//Ajmer
-	if(event.message.toLowerCase() == "explore 1"){
+	if(event.message.toLowerCase() == "explore 1" && event.messageobj.refmsgid != "experience"){
 		context.simpledb.roomleveldata.Nearby = true;
 		console.log("explore ref msg ="+ event.messageobj.refmsgid);
 		var city = "";
@@ -285,7 +295,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/plan.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}]
     		}];
@@ -295,7 +305,7 @@ function MessageHandler(context, event) {
 	//Barmer
 	//Chittorgarh
 	//Dausa 
-	if(event.message.toLowerCase() == "show 1" && event.messageobj.refmsgid == "Ajmer"){
+	if((event.message.toLowerCase() == "show 1" && event.messageobj.refmsgid == "Ajmer") || event.message.toLowerCase() == "what to see in ajmer?"){
 		var seeCatAjmer = ["Come explore the wonders and sites that Ajmer has to offer you. There’s always something to see in Rajasthan.", {
 			"type": "catalogue",
 			"imageaspectratio": "horizontal",
@@ -330,7 +340,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Now",
 						"url": "http://www.tourism.rajasthan.gov.in/ajmer.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -373,7 +383,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Now",
 						"url": "http://www.tourism.rajasthan.gov.in/jodhpur.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -463,7 +473,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/jodhpur.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -477,7 +487,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/pushkar.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -491,7 +501,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/jaipur.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]}
@@ -517,7 +527,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/pushkar.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -531,7 +541,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/jaisalmer.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -545,7 +555,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Site",
 						"url": "http://www.tourism.rajasthan.gov.in/udaipur.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]}
@@ -572,7 +582,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/packages.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -587,7 +597,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/best-time-to-visit.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -602,7 +612,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/foreign-tourists.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -617,7 +627,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/hotel-listing.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -632,7 +642,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/transportation.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -647,7 +657,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/how-to-get-there.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -662,7 +672,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/suggested-itineraries.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -677,7 +687,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Page",
 						"url": "http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/plan/travel-desk.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -702,7 +712,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Book Now",
 						"url": "http://www.airindia.in",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -714,7 +724,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Book Now",
 						"url": "https://www.irctc.co.in/eticketing/loginHome.jsf",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -726,7 +736,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Book Now",
 						"url": "http://transport.rajasthan.gov.in/rsrtc/",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -783,17 +793,17 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Take A Virtual Tour",
 						"url":"http://www.tourism.rajasthan.gov.in/media.html#tab1",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					},{
 						"type": "url",
 						"title": "Book Now",
-						"url":"http://rtdc.tourism.rajasthan.gov.in/Client/TrainHome.aspx",
-						"webview_height_ratio": "compact"
+						"url":"http://rtdc.tourism.rajasthan.gov.in/Client/PowTrainBook.aspx",
+						"webview_height_ratio": "full"
 					},{
 						"type": "url",
 						"title": "Journey",
 						"url":"http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/experience/luxury-train-travel/palace-on-wheels.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -801,16 +811,21 @@ function MessageHandler(context, event) {
 					"subtitle": "India’s most popular luxury train, the Palace on Wheels has been revamped as the Heritage Palace on Wheels",
 					"imgurl": "http://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/others/hpowluxury-train-travel-01.jpg",
 					"options": [{
-						"type": "text",
-						"title": "Itinerary 1"
-					},{
-						"type": "text",
-						"title": "Itinerary 2"
+						"type": "url",
+						"title": "Visit Page",
+						"url":"http://www.tourism.rajasthan.gov.in/content/rajasthan-tourism/en/experience/luxury-train-travel/heritage-palace-on-wheels.html",
+						"webview_height_ratio": "full"
 					},{
 						"type": "url",
-						"title": "Book Now",
-						"url":"http://rtdc.tourism.rajasthan.gov.in/Client/TrainHome.aspx",
-						"webview_height_ratio": "compact"
+						"title": "Book Golden Triangle",
+						"url":"http://rtdc.tourism.rajasthan.gov.in/Client/RROWTrainBook.aspx",
+						"webview_height_ratio": "full"
+					},
+					{
+						"type": "url",
+						"title": "Book Desert Triangle",
+						"url":"http://rtdc.tourism.rajasthan.gov.in/Client/HPOWTrainBook2.aspx",
+						"webview_height_ratio": "full"
 					}]
 				}
 			]
@@ -819,13 +834,13 @@ function MessageHandler(context, event) {
 		return;
 	}
 	//about us
-	if (event.message.toLowerCase() == "about us"){
-    	var aboutCat = "Dear "+ event.senderobj.display+", Welcome to my Rajasthan, fascinating Rajasthan.\nThis land is a colourful melange of massive forts, stunning palaces, diverse cultures, delectable cuisines and warm people, set amidst a rugged yet inviting landscape.\nIt is a land that has inspired me and countless others. Come tread on the sands of time.\n\nTo know more visit: http://www.tourism.rajasthan.gov.in/about-rajasthan.html";
+	if (event.message.toLowerCase() == "about us" || event.message.toLowerCase() == "about"){
+    	var aboutCat = "Dear "+ event.senderobj.display+", Welcome to my Rajasthan, fascinating Rajasthan.\nThis land is a colourful melange of massive forts, stunning palaces, diverse cultures, delectable cuisines and warm people, set amidst a rugged yet inviting landscape.\n\nIt is a land that has inspired me and countless others. Come tread on the sands of time.\n\nTo know more visit: http://www.tourism.rajasthan.gov.in/about-rajasthan.html";
     	context.sendResponse(aboutCat);
    		return;
 	}
 	//contact
-	if (event.message.toLowerCase() == "contact us"){
+	if (event.message.toLowerCase() == "contact us" || event.message.toLowerCase() == "contact" || event.message.toLowerCase() == "phone" || event.message.toLowerCase() == "email"){
 		var contactMsg=["AJMER\nRegional Tourist Office & Tourist Reception Centre\nRTDC Hotel Khadim\nTel.: 0145-2627426/1364\nFax : 0145-2431330\nTourist Inf. Counter, Railway Station\ntrcajmer-dot@rajasthan.gov.in\n\n\nALWAR\nTourist Reception Centre\nOpp.Railway Station,\nTel.: 0144-2347348\ntrcalwar-dot@rajasthan.gov.in\n\n\nBARMER\nRajasthan Tourist Information Bureau\nTel.: 02992-252406\ntrcjaisal2992@gmail.com",
 		{
 			"type":"quick_reply",
@@ -845,8 +860,7 @@ function MessageHandler(context, event) {
 			"type": "catalogue",
 			"imageaspectratio": "horizontal",
 			"msgid": "cat5",
-			"items": 
-			[
+			"items": [
 				{
 					"title": "Video",
 					"subtitle": "Some of the exciting videos:-",
@@ -855,7 +869,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Know more",
 						"url":"http://www.tourism.rajasthan.gov.in/media.html#tab1",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -866,7 +880,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore",
 						"url":"http://www.tourism.rajasthan.gov.in/media.html#tab2",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -877,7 +891,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"url": "http://www.tourism.rajasthan.gov.in/media.html#tab3",
 						"title": "Explore",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -888,7 +902,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore",
 						"url":"http://www.tourism.rajasthan.gov.in/media.html#tab4",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -899,7 +913,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Visit Now",
 						"url": "http://www.tourism.rajasthan.gov.in/media.html#tab5",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				}
 				
@@ -909,7 +923,7 @@ function MessageHandler(context, event) {
 		return;
 	}
 	//films
-	if (event.message.toLowerCase()=="films"){
+	if (event.message.toLowerCase()=="films" || event.message.toLowerCase()=="Rajasthan in Bollywood"){
 		var filmsCat = ["Rajasthan is not only one of the most popular tourist destinations in the world but also the most widely captured on cinema. Ranging from blockbusters with massive budgets to documentaries made on a shoestring budget, Rajasthan offers a vast range of locations and facilities for every kind of filmmaker and genre of cinema. In fact, it has been a favoured location with both Indian and International filmmakers such as Christopher Nolan, Wes Anderson, Sanjay Leela Bhansali, Karan Johar and more!",{
 			"type": "catalogue",
 			"imageaspectratio": "horizontal",
@@ -920,20 +934,20 @@ function MessageHandler(context, event) {
 					"title":"BADRINATH KI DULHANIYA (2017)",
 					"subtitle":"Badrinath ki Dulhaniya is a romantic comedy released in 2017.The movie plays around a lot with the prevalent patriarchy and societal constructs, against which, Vaidehi, a girl from Kota (played by Alia Bhatt), is seen with dreams that go against convention. ",
 					"imgurl":"http://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/film-tourism/Films/BadrinathKiDulhaniya.jpg",
-					"webview_height_ratio": "compact"
+					"webview_height_ratio": "full"
 					
 				},
 				{
 					"title":"BAJIRAO MASTANI (2015)",
 					"subtitle":"This period drama depicting a legendary love story is famous for its beautiful locations. Parts of Bajirao Mastani have been shot in the stunning Amber Palace in Jaipur. Deepika’s famous song, Rang Do Mohe Laal beautifully shows the stunning architecture and interiors of the Amber Palace.",
 					"imgurl":"http://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/film-tourism/Films/10.jpg",
-					"webview_height_ratio": "compact"
+					"webview_height_ratio": "full"
 				},
 				{
 					"title":"YEH JAWANI HAIN DEEWANI (2013)",
 					"subtitle":"Who can forget the entire second half of this Hindi film that made us all wish for a fabulous destination wedding in Rajasthan? Shot in the Bagore ki Haveli in Udaipur, this film wonderfully depicts the colours, vibrant atmosphere and the beauty of Rajasthan.",
 					"imgurl":"http://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/film-tourism/Films/9.jpg",
-					"webview_height_ratio":"compact"
+					"webview_height_ratio":"full"
 				}
 			]
 		}];
@@ -971,7 +985,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore",
 						"url":"http://www.tourism.rajasthan.gov.in/travel-diaries/neelimasthan.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -982,7 +996,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore",
 						"url":"http://www.tourism.rajasthan.gov.in/travel-diaries/laxmisthan.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				{
@@ -993,7 +1007,7 @@ function MessageHandler(context, event) {
 						"type": "url",
 						"title": "Explore",
 						"url":"http://www.tourism.rajasthan.gov.in/travel-diaries/sacredsthan.html",
-						"webview_height_ratio": "compact"
+						"webview_height_ratio": "full"
 					}]
 				},
 				
@@ -1062,6 +1076,16 @@ function EventHandler(context, event) {
 					"options": [{
 						"type": "text",
 						"title": "Know"
+					}]
+				},
+				{
+					"title": "Swachh Bharat - Rajasthan",
+					"subtitle": "Check out the latest updates and what you can do. ",
+					"imgurl": "https://timesofindia.indiatimes.com/thumb/msid-48159028,width-400,resizemode-4/48159028.jpg",
+					"options": [{
+						"type": "url",
+						"url": "https://blogs.timesofindia.indiatimes.com/voices/swachh-bharat-mission-lessons-from-rajasthan/",
+						"title": "Know more!"
 					}]
 				}
 		    ]
